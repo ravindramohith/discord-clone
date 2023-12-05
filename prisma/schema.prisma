@@ -8,7 +8,7 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Profile{
+model Profile {
   id String @id @default(uuid())
   userId String @unique
   name String
@@ -23,7 +23,7 @@ model Profile{
   updatedAt DateTime @updatedAt
 }
 
-model Server{
+model Server {
   id String @id @default(uuid())
   name String
   imageUrl String @db.Text
