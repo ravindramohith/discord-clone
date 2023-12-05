@@ -9,7 +9,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -77,9 +76,9 @@ export const EditServerModal = () => {
       <Dialog open={isModalOpen} onOpenChange={onClose}>
         <DialogContent className="bg-white text-black p-0 overflow-hidden">
           <DialogHeader className="pt-8 px-6">
-            <DialogHeader className="text-2xl text-center font-bold">
+            <DialogTitle className="text-2xl text-center font-bold">
               Customize your Server
-            </DialogHeader>
+            </DialogTitle>
             <DialogDescription className="text-center text-zinc-500">
               Give your server a personality with a name and an image. You can
               always change it later.

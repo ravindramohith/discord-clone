@@ -6,8 +6,8 @@ import { X } from "lucide-react";
 import Image from "next/image";
 
 interface FileUploadProps {
-  onChange: (url?: String) => void;
-  value: String;
+  onChange: (url?: string) => void;
+  value: string;
   endpoint: "serverImage" | "messageFile";
 }
 const FileUpload = (props: FileUploadProps) => {
@@ -29,7 +29,7 @@ const FileUpload = (props: FileUploadProps) => {
   return (
     <UploadDropzone
       endpoint={endpoint}
-      onClientUploadComplete={(res) => {
+      onClientUploadComplete={(res: any) => {
         onChange(res?.[0].url);
       }}
       onUploadError={(err: Error) => {

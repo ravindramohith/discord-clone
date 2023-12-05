@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
@@ -49,9 +49,9 @@ export const InviteModal = () => {
       <Dialog open={isModalOpen} onOpenChange={onClose}>
         <DialogContent className="bg-white text-black p-0 overflow-hidden">
           <DialogHeader className="pt-8 px-6">
-            <DialogHeader className="text-2xl text-center font-bold">
+            <DialogTitle className="text-2xl text-center font-bold">
               Invite Friends
-            </DialogHeader>
+            </DialogTitle>
           </DialogHeader>
           <div className="p-6">
             <Label className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
