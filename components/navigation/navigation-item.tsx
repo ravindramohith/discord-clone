@@ -5,9 +5,9 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 
 const NavigationItem = (props: {
-  id: String;
-  imageUrl: String;
-  name: String;
+  id: string;
+  imageUrl: string;
+  name: string;
 }) => {
   const { id, imageUrl, name } = props;
   const params = useParams();

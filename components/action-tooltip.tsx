@@ -8,7 +8,7 @@ import {
 } from "./ui/tooltip";
 
 interface ActionToolTipProps {
-  label: String;
+  label: string;
   children: React.ReactNode;
   side?: "top" | "right" | "bottom" | "left";
   align?: "start" | "center" | "end";
