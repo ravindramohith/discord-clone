@@ -1,7 +1,7 @@
-import React from "react";
-
-const ServerPage = () => {
-  return <div>ServerPage</div>;
-};
-
-export default ServerPage;
+const ServerIdPage = () => {
+  return ( 
+    <div>Server ID Page</div>
+   );
+}
+ 
+export default ServerIdPage;

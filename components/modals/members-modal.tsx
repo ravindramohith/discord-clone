@@ -10,7 +10,7 @@ import qs from "query-string";
 import { useModal } from "@/hooks/use-modal-store";
 import { ServerWithMembersWithProfiles } from "@/types";
 import { ScrollArea } from "../ui/scroll-area";
-import UserAvatar from "../user-avatar";
+import { UserAvatar } from "../user-avatar";
 import {
   Check,
   Gavel,
