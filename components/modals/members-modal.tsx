@@ -38,9 +38,9 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const roleIcons = {
-  GUEST: <Shield className="h-4 w-4 text-secondary" />,
+  GUEST: <Shield className="h-4 w-4 text-secondary ml-2" />,
   MODERATOR: <ShieldCheck className="h-4 w-4 text-indigo-500 ml-2" />,
-  ADMIN: <ShieldAlert className="h-4 w-4 text-rose-500" />,
+  ADMIN: <ShieldAlert className="h-4 w-4 text-rose-500 ml-2" />,
 };
 export const MembersModal = () => {
   const { isOpen, onClose, onOpen, type, data } = useModal();
