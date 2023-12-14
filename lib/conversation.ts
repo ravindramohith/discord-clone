@@ -1,57 +1,63 @@
-import { db } from "./db";
+import { db } from "@/lib/db";
 
-const findConversation = async (member1Id: string, member2Id: string) => {
+export const getOrCreateConversation = async (memberOneId: string, memberTwoId: string) => {
+  let conversation = await findConversation(memberOneId, memberTwoId) || await findConversation(memberTwoId, memberOneId);
+
+  if (!conversation) {
+    conversation = await createNewConversation(memberOneId, memberTwoId);
+  }
+
+  return conversation;
+}
+
+const findConversation = async (memberOneId: string, memberTwoId: string) => {
   try {
     return await db.conversation.findFirst({
       where: {
-        AND: [{ memberOneId: member1Id }, { memberTwoId: member2Id }],
+        AND: [
+          { memberOneId: memberOneId },
+          { memberTwoId: memberTwoId },
+        ]
       },
       include: {
         memberOne: {
-          include: { profile: true },
+          include: {
+            profile: true,
+          }
         },
         memberTwo: {
-          include: { profile: true },
-        },
-      },
+          include: {
+            profile: true,
+          }
+        }
+      }
     });
-  } catch (e) {
-    console.log(e);
+  } catch {
     return null;
   }
-};
+}
 
-const createNewConversation = async (member1Id: string, member2Id: string) => {
+const createNewConversation = async (memberOneId: string, memberTwoId: string) => {
   try {
     return await db.conversation.create({
       data: {
-        memberOneId: member1Id,
-        memberTwoId: member2Id,
+        memberOneId,
+        memberTwoId,
       },
       include: {
         memberOne: {
-          include: { profile: true },
+          include: {
+            profile: true,
+          }
         },
         memberTwo: {
-          include: { profile: true },
-        },
-      },
-    });
-  } catch (e) {
-    console.log(e);
+          include: {
+            profile: true,
+          }
+        }
+      }
+    })
+  } catch {
     return null;
   }
-};
-
-export const getOrCreateConversation = async (
-  member1Id: string,
-  member2Id: string
-) => {
-  let conversation =
-    (await findConversation(member1Id, member2Id)) ||
-    (await findConversation(member2Id, member1Id));
-  if (!conversation)
-    conversation = await createNewConversation(member1Id, member2Id);
-
-  return conversation;
-};
+}

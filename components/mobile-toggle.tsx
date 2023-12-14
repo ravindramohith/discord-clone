@@ -1,10 +1,19 @@
-import { Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "./sheet";
-import { Button } from "./button";
-import { NavigationSidebar } from "../navigation/navigation-sidebar";
-import { ServerSidebar } from "../server/server-sidebar";
+import { Menu } from "lucide-react"
 
-export const MobileToggle = ({ serverId }: { serverId: string }) => {
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { NavigationSidebar } from "@/components/navigation/navigation-sidebar";
+import { ServerSidebar } from "@/components/server/server-sidebar";
+
+export const MobileToggle = ({
+  serverId
+}: {
+  serverId: string;
+}) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -19,5 +28,5 @@ export const MobileToggle = ({ serverId }: { serverId: string }) => {
         <ServerSidebar serverId={serverId} />
       </SheetContent>
     </Sheet>
-  );
-};
+  )
+}

@@ -3,6 +3,7 @@
 import qs from "query-string";
 import axios from "axios";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   Dialog,
@@ -14,35 +15,37 @@ import {
 } from "@/components/ui/dialog";
 import { useModal } from "@/hooks/use-modal-store";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 
 export const DeleteChannelModal = () => {
   const { isOpen, onClose, type, data } = useModal();
+  const router = useRouter();
 
   const isModalOpen = isOpen && type === "deleteChannel";
   const { server, channel } = data;
-  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const leaveServer = async () => {
-    const url = qs.stringifyUrl({
-      url: `/api/channels/${channel?.id}`,
-      query: { serverId: server?.id },
-    });
-    setIsLoading(true);
-    await axios
-      .delete(url)
-      .then((res) => {
-        onClose();
-        router.refresh();
-        router.push(`/servers/${server?.id}`);
+  const onClick = async () => {
+    try {
+      setIsLoading(true);
+      const url = qs.stringifyUrl({
+        url: `/api/channels/${channel?.id}`,
+        query: {
+          serverId: server?.id,
+        }
       })
-      .catch((e) => console.log(e))
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
+
+      await axios.delete(url);
+
+      onClose();
+      router.refresh();
+      router.push(`/servers/${server?.id}`);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <Dialog open={isModalOpen} onOpenChange={onClose}>
@@ -52,29 +55,29 @@ export const DeleteChannelModal = () => {
             Delete Channel
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Are you sure you want to do this?
-            <br />
-            <span className="font-semibold text-indigo-500">
-              # {channel?.name}
-            </span>{" "}
-            will be permenantly deleted.
+            Are you sure you want to do this? <br />
+            <span className="text-indigo-500 font-semibold">#{channel?.name}</span> will be permanently deleted.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="bg-gray-100 px-6 py-4">
           <div className="flex items-center justify-between w-full">
-            <Button disabled={isLoading} onClick={onClose} variant="ghost">
+            <Button
+              disabled={isLoading}
+              onClick={onClose}
+              variant="ghost"
+            >
               Cancel
             </Button>
             <Button
               disabled={isLoading}
-              onClick={leaveServer}
-              variant="destructive"
+              variant="primary"
+              onClick={onClick}
             >
-              Delete
+              Confirm
             </Button>
           </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
