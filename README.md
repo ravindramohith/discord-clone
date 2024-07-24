@@ -1,6 +1,6 @@
 # Fullstack Discord Clone
 
-**✨ Live Website: [https://discord-clone-production-7fe9.up.railway.app/](https://discord-clone-production-7fe9.up.railway.app/)**
+**✨ Live Website: [https://discord-clone-production-7fe9.up.railway.app/](https://discord-clone-production-7fe9.up.railway.app/)**(currently out of production)
 
 ![img-1](./assets/discord-clone-1.png)
 # Features:
