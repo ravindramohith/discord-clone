@@ -1,7 +1,7 @@
-FROM node:20-alpine3.18 as builder
+FROM node:22-alpine3.19 as builder
 WORKDIR /app
-COPY package.json ./
-RUN npm install
+COPY package*.json ./
+RUN npm install --production
 COPY . .
 RUN npm run build
 EXPOSE 3000
