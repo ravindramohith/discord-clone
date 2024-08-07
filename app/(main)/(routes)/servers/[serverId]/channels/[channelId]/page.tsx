@@ -6,7 +6,7 @@ import { ChatHeader } from "@/components/chat/chat-header";
 import { db } from "@/lib/db";
 import ChatInput from "@/components/chat/chat-input";
 import ChatMessages from "@/components/chat/chat-messages";
-import type { ChannelType } from "@prisma/client";
+import { ChannelType } from "@prisma/client";
 import { MediaRoom } from "@/components/media-room";
 
 interface ChannelIdPageProps {
