@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY prisma ./
 RUN npm install --legacy-peer-deps
+RUN npx prisma migrate dev
 COPY . .
 RUN npm run build
 EXPOSE 3000
