@@ -1,6 +1,7 @@
 FROM node:22-alpine3.19 as builder
 WORKDIR /app
 COPY package*.json ./
+COPY prisma ./
 RUN npm install --legacy-peer-deps
 RUN npx prisma generate
 COPY . .
