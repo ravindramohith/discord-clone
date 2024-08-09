@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { DirectMessage, Message } from "@prisma/client";
 import { NextResponse } from "next/server";
 
+
 const BATCH = 10;
 export async function GET(req: Request) {
   try {
