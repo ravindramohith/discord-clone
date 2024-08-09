@@ -3,7 +3,6 @@ WORKDIR /app
 COPY package*.json ./
 COPY prisma ./
 COPY . .
-RUN npm i -D prisma@5.1.1
 RUN npm install --legacy-peer-deps
 COPY . .
 RUN npm run build
