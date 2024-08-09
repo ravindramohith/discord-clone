@@ -29,4 +29,4 @@ jobs:
       - name: Remove Existing Container
         run: docker rm -f discord-clone-container
       - name: Run Docker Container
-        run: docker run -d -p 3000:3000 --name discord-clone-container ravindramohith/discord_clone:latest
+        run: docker run -d -p 3000:3000 --name discord-clone-container ravindramohith/discord_clone
