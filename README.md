@@ -128,9 +128,9 @@ This project is a fully functional clone of Discord, built using the latest web 
 
 ## Deployment
 
-### Continuous Deployment on AWS EC2
+### Deployment on AWS EC2
 
-This project is continuously deployed on an **AWS** EC2 instance using **GitHub Actions**. The deployment pipeline is triggered on every push to the `production` branch. The workflow includes building a Docker image, pushing it to DockerHub, and then pulling and running it on the EC2 instance.
+This project is deployed on an **AWS** EC2 instance using **GitHub Actions** through **CI/CD pipeline**. The deployment pipeline is triggered on every push to the `production` branch. The workflow includes building a Docker image, pushing it to DockerHub, and then pulling and running it on the EC2 instance.
 
 You can view the details of the workflow and its execution [here](https://github.com/ravindramohith/discord-clone/actions).
 
